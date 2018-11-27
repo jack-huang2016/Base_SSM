@@ -1,0 +1,2 @@
+Create Index  u_md_dm.IMBSD_BN_SN_YM on u_md_dm.IMP_MONTH_BASIS_SAL_DTL(brand_no,store_new_no,year_month);
+Create Index  u_md_dm.IMBSD_RN_SN on u_md_dm.IMP_MONTH_BASIS_SAL_DTL(REGION_NAME, STORE_NAME);
