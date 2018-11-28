@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<!-- changes from the defaults -->
+		<setting name="lazyLoadingEnabled" value="false" />
+		<!-- JdbcType enumeration. Most common are: NULL, VARCHAR and OTHER -->
+		<setting name="jdbcTypeForNull" value="NULL" />
+		<setting name="defaultStatementTimeout" value="240" />
+	</settings>
+	
+	<plugins>  
+      	<plugin interceptor="com.yougou.bi.mdp.dal.util.MapInterceptor">  <!--对特殊的数据进行处理，直接返回map的查询会把key值都更新为大写  -->
+          <property name="some" value="100"/>
+      	</plugin>
+	 </plugins> 
+    
+	<mappers>
+		<!-- <mapper resource="mapper/freport/ZA183SMapper.xml"/>-->
+		<!-- 店铺信息表 -->
+		<mapper resource="mapper/DimOrgAllinfoMapper.xml"/>
+		
+		<!-- 固定报表帮助模块 -->
+		<mapper resource="mapper/ReportsInfoMapper.xml"/>
+		
+		<!-- 系统操作级别日志 -->
+		<mapper resource="mapper/SysLogMapper.xml"/>
+		
+		
+	</mappers>
+</configuration>

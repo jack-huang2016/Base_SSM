@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yougou.bi.mdp.dal.database.SysLogMapper" >
+  <resultMap id="BaseResultMap" type="com.yougou.bi.mdp.common.model.SysLog" >
+    <id column="MODEL_NO" property="modelNo" jdbcType="VARCHAR" />
+    <result column="MODEL_NAME" property="modelName" jdbcType="VARCHAR" />
+    <result column="IP" property="ip" jdbcType="VARCHAR" />
+    <result column="OPERATOR" property="operator" jdbcType="VARCHAR" />
+    <result column="USER_LOGIN_NAME" property="userLoginName" jdbcType="VARCHAR" />
+    <result column="ORGAN_NAME" property="organName" jdbcType="VARCHAR" />
+    <result column="REGION_NAME" property="regionName" jdbcType="VARCHAR" />
+    <result column="OPERATE_TIME" property="operateTime" jdbcType="TIMESTAMP" />
+    <result column="COST_DEGREE" property="costDegree" jdbcType="VARCHAR" />
+    <result column="LOG_TYPE" property="logType" jdbcType="VARCHAR" />
+    <result column="NEED_TIME" property="needTime" jdbcType="VARCHAR" />
+    <result column="ERROR_MSG" property="errorMsg" jdbcType="VARCHAR" />
+    <result column="REMARKS" property="remarks" jdbcType="VARCHAR" />
+    <result column="DATA_SOURCE" property="dataSource" jdbcType="VARCHAR" />
+    <result column="SUBJECT_NAME" property="subjectName" jdbcType="VARCHAR" />
+    <result column="EXPLAIN_COST" property="explainCost" jdbcType="BIGINT" />
+    <result column="EXPLAIN_IO_COST" property="explainIOCost" jdbcType="BIGINT" />
+    <result column="QUERY_TIME" property="queryTime" jdbcType="BIGINT" />
+    <result column="REQUEST_NO" property="requestNo" jdbcType="VARCHAR" />
+    <result column="EXPECT_QUERY_TIME" property="expectQueryTime" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    MODEL_NO, MODEL_NAME, IP, OPERATOR, OPERATE_TIME,USER_LOGIN_NAME,ORGAN_NAME,REGION_NAME,COST_DEGREE,
+    LOG_TYPE,NEED_TIME,ERROR_MSG,DATA_SOURCE,SUBJECT_NAME,EXPLAIN_COST,EXPLAIN_IO_COST,QUERY_TIME,REQUEST_NO,
+    EXPECT_QUERY_TIME
+  </sql>
+  <sql id="condition" >
+    <if test="null!=params" >
+      <if test="null!=params.queryCondition and ''!=params.queryCondition" >
+        ${params.queryCondition}
+      </if>
+      <if test="null!=params.modelNameLike and ''!=params.modelNameLike" >
+         and MODEL_NAME like  '%${params.modelNameLike}%'
+      </if>
+      <if test="null!=params.operatorLike and ''!=params.operatorLike" >
+         and OPERATOR like  '%${params.operatorLike}%'
+      </if>      
+      <if test="null!=params.startTime and ''!=params.startTime" >
+         and OPERATE_TIME &gt;= to_date('${params.startTime}','yyyy/mm/dd hh24:mi:ss')
+      </if>
+      <if test="null!=params.endTime and ''!=params.endTime" >
+         and OPERATE_TIME &lt;= to_date('${params.endTime}','yyyy/mm/dd hh24:mi:ss') 
+      </if>  
+        <if test="null!=params.regionName and ''!=params.regionName" >
+         and REGION_NAME =#{params.regionName}
+      </if>  
+      <if test="null!=params.onlyerror and 'on'== params.onlyerror" >
+         and ERROR_MSG like '%error%'
+      </if> 
+    </if>
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    SELECT 
+    <include refid="Base_Column_List" />
+    FROM U_DB_PT.SYS_LOG
+    WHERE MODEL_NO = #{modelNo,jdbcType=VARCHAR}
+  </select>
+  <select id="selectCount" resultType="java.lang.Integer" >
+    SELECT COUNT(*) as s FROM U_DB_PT.SYS_LOG  WHERE 1=1 
+    AND OPERATE_TIME &gt;= to_date(to_char(SYSDATE,'yyyymmdd'), 'yyyymmdd')
+    AND OPERATE_TIME &lt;  to_date(to_char(SYSDATE+1,'yyyymmdd'), 'yyyymmdd')
+    <include refid="condition" />
+  </select>
+  
+  <select id="selectCDCount" resultType="java.lang.Integer" >
+    SELECT COUNT(*) as s FROM U_DB_PT.SYS_LOG  WHERE 1=1 
+    <include refid="condition" />
+  </select>
+  
+ <select id="searchSysLog" resultMap="BaseResultMap" parameterType="map" >
+    SELECT B.* from (SELECT A.*,ROWNUM rn FROM( SELECT 
+    <include refid="Base_Column_List" />
+     FROM U_DB_PT.SYS_LOG WHERE 1=1 
+    <include refid="condition" />
+    order by 
+    <if test="orderByField != null and ''!=orderByField" >
+      <if test="orderByField == 'modelName'" >
+        MODEL_NAME
+      </if>
+      <if test="orderByField == 'operateTime'" >
+        OPERATE_TIME
+      </if>
+      <if test="orderByField == 'operator'" >
+        OPERATOR
+      </if>
+      <if test="orderByField" >
+        ${orderBy},
+      </if>
+    </if>
+    OPERATE_TIME desc
+    ) A WHERE ROWNUM &lt; #{page.endRowNum}) B WHERE rn &gt; #{page.startRowNum}
+  </select>
+  
+  <select id="selectByPage" resultMap="BaseResultMap" parameterType="map" >
+    SELECT B.* from (SELECT A.*,ROWNUM rn FROM( SELECT 
+    <include refid="Base_Column_List" />
+     FROM U_DB_PT.SYS_LOG WHERE 1=1 
+     AND OPERATE_TIME &gt;= to_date(to_char(SYSDATE,'yyyymmdd'), 'yyyymmdd')
+     AND OPERATE_TIME &lt;  to_date(to_char(SYSDATE+1,'yyyymmdd'), 'yyyymmdd')
+    <include refid="condition" />
+    order by 
+    <if test="orderByField != null and ''!=orderByField" >
+      <if test="orderByField == 'modelName'" >
+        MODEL_NAME
+      </if>
+      <if test="orderByField == 'operateTime'" >
+        OPERATE_TIME
+      </if>
+      <if test="orderByField == 'operator'" >
+        OPERATOR
+      </if>
+      <if test="orderByField" >
+        ${orderBy},
+      </if>
+    </if>
+    OPERATE_TIME desc
+    ) A WHERE ROWNUM &lt; #{page.endRowNum}) B WHERE rn &gt; #{page.startRowNum}
+  </select>
+  
+  <select id="selectByParams" resultMap="BaseResultMap" parameterType="map" >
+    SELECT 
+    <include refid="Base_Column_List" />
+     FROM U_DB_PT.SYS_LOG WHERE 1=1 
+    <include refid="condition" />
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    DELETE FROM U_DB_PT.SYS_LOG
+    WHERE MODEL_NO = #{modelNo,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByPrimarayKeyForModel" parameterType="com.yougou.bi.mdp.common.model.SysLog" >
+    DELETE FROM U_DB_PT.SYS_LOG
+    WHERE MODEL_NO = #{modelNo,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yougou.bi.mdp.common.model.SysLog" >
+    INSERT INTO U_DB_PT.SYS_LOG (MODEL_NO, MODEL_NAME, IP, 
+      OPERATOR, OPERATE_TIME)
+    VALUES (#{modelNo,jdbcType=VARCHAR}, #{modelName,jdbcType=VARCHAR}, #{ip,jdbcType=VARCHAR}, 
+      #{operator,jdbcType=VARCHAR}, #{operateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yougou.bi.mdp.common.model.SysLog" >
+	INSERT INTO U_DB_PT.SYS_LOG
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+		<if test="modelNo != null" >
+        MODEL_NO,
+		</if>
+		<if test="modelName != null" >
+        MODEL_NAME,
+		</if>
+		<if test="methodsName != null || methodsName != ''" >
+        METHODS_NAME,
+		</if>
+		<if test="methodsParam != null || methodsParam != ''" >
+        METHODS_PARAM,
+		</if>
+		<if test="needTime != null || needTime != ''" >
+        NEED_TIME,
+		</if>
+		<if test="errorMsg != null || errorMsg != ''" >
+        ERROR_MSG,
+		</if>
+		<if test="ip != null" >
+        IP,
+		</if>
+		<if test="operator != null" >
+        OPERATOR,
+		</if>
+		<if test="operateTime != null" >
+        OPERATE_TIME,
+		</if>
+		<if test="organName != null" >
+        ORGAN_NAME,
+		</if>
+		<if test="userLoginName != null" >
+        USER_LOGIN_NAME,
+		</if>
+        <if test="regionName != null" >
+        REGION_NAME,
+		</if>
+		<if test="costDegree != null" >
+        COST_DEGREE,
+		</if>
+		<if test="logType != null" >
+        LOG_TYPE,
+		</if>
+		<if test="remarks != null" >
+        REMARKS,
+		</if>
+		<if test="dataSource != null" >
+        DATA_SOURCE,
+		</if>
+		<if test="subjectName != null" >
+        SUBJECT_NAME,
+		</if>
+		<if test="explainCost != null" >
+        explain_cost,
+		</if>
+		<if test="explainIOCost != null" >
+        explain_io_cost,
+		</if>
+		<if test="queryTime != null" >
+        query_time,
+		</if>
+		<if test="requestNo != null" >
+        REQUEST_NO,
+		</if>
+		<if test="expectQueryTime != null" >
+        EXPECT_QUERY_TIME,
+		</if>
+    </trim>
+	<trim prefix="values (" suffix=")" suffixOverrides="," >
+		<if test="modelNo != null" >
+        #{modelNo,jdbcType=VARCHAR},
+		</if>
+		<if test="modelName != null" >
+        #{modelName,jdbcType=VARCHAR},
+		</if>
+		<if test="methodsName != null || methodsName != ''" >
+        #{methodsName,jdbcType=VARCHAR},
+		</if>
+		<if test="methodsParam != null || methodsParam != ''" >
+        #{methodsParam,jdbcType=CLOB},
+		</if>
+		<if test="needTime != null || needTime != ''" >
+        #{needTime,jdbcType=VARCHAR},
+		</if>
+		<if test="errorMsg != null || errorMsg != ''" >
+        #{errorMsg,jdbcType=VARCHAR},
+		</if>
+		<if test="ip != null" >
+        #{ip,jdbcType=VARCHAR},
+		</if>
+		<if test="operator != null" >
+        #{operator,jdbcType=VARCHAR},
+		</if>
+        <if test="operateTime != null" >
+        #{operateTime,jdbcType=TIMESTAMP},
+		</if>
+		<if test="organName != null" >
+        #{organName,jdbcType=VARCHAR},
+		</if>
+		<if test="userLoginName != null" >
+        #{userLoginName,jdbcType=VARCHAR},
+		</if>
+		<if test="regionName != null" >
+		#{regionName,jdbcType=VARCHAR},
+      	</if>
+      	<if test="costDegree != null" >
+		#{costDegree,jdbcType=VARCHAR},
+      	</if>
+      	<if test="logType != null" >
+		#{logType,jdbcType=VARCHAR},
+      	</if>
+      	<if test="remarks != null" >
+		#{remarks,jdbcType=VARCHAR},
+      	</if>
+      	<if test="dataSource != null" >
+		#{dataSource,jdbcType=VARCHAR},
+      	</if>
+      	<if test="subjectName != null" >
+		#{subjectName,jdbcType=VARCHAR},
+      	</if>
+      	<if test="explainCost != null" >
+		#{explainCost,jdbcType=INTEGER},
+      	</if>
+      	<if test="explainIOCost != null" >
+		#{explainIOCost,jdbcType=VARCHAR},
+      	</if>
+      	<if test="queryTime != null" >
+		#{queryTime,jdbcType=INTEGER},
+      	</if>
+      	<if test="requestNo != null" >
+		#{requestNo,jdbcType=VARCHAR},
+      	</if>
+      	<if test="expectQueryTime != null" >
+		#{expectQueryTime,jdbcType=VARCHAR},
+      	</if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yougou.bi.mdp.common.model.SysLog" >
+    UPDATE U_DB_PT.SYS_LOG
+    <set >
+      <if test="modelName != null" >
+        MODEL_NAME = #{modelName,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null" >
+        IP = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="operator != null" >
+        OPERATOR = #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="operateTime != null" >
+        OPERATE_TIME = #{operateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    WHERE MODEL_NO = #{modelNo,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yougou.bi.mdp.common.model.SysLog" >
+    UPDATE U_DB_PT.SYS_LOG
+    SET MODEL_NAME = #{modelName,jdbcType=VARCHAR},
+      IP = #{ip,jdbcType=VARCHAR},
+      OPERATOR = #{operator,jdbcType=VARCHAR},
+      OPERATE_TIME = #{operateTime,jdbcType=TIMESTAMP}
+    WHERE MODEL_NO = #{modelNo,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="getCostTimeRate" resultType="java.lang.Integer"  parameterType="map">
+  	select 
+		nvl(ceil(median(explain_cost)/median(to_number(need_time))),0)
+	from U_DB_PT.sys_log 
+	where OPERATE_TIME &gt;= to_date(to_char(sysdate - 6, 'yyyymmdd'),'yyyymmdd')
+	and OPERATE_TIME &lt;= to_date(to_char(sysdate + 1, 'yyyymmdd'),'yyyymmdd')
+	and methods_name = 'exportExecl'
+	and explain_cost is not null
+	and need_time is not null
+	and subject_name = #{params.subjectName}
+	and data_source like '%${params.dbType}%'
+  </select>
+  <select id="getAVGTimeByReportId" resultType="java.lang.Integer"  parameterType="map">
+  	SELECT ceil(nvl(avg(to_number(need_time)),0)/1000) 
+	FROM U_DB_PT.sys_log
+	where OPERATE_TIME &gt;= to_date(to_char(sysdate - 6, 'yyyymmdd'),'yyyymmdd')
+	and OPERATE_TIME &lt;= to_date(to_char(sysdate + 1, 'yyyymmdd'),'yyyymmdd')
+	AND methods_name = 'exportExecl'
+	AND need_time IS NOT NULL
+	AND model_name = '报表查询||'||#{params.reportId}
+	and data_source like '%${params.dbType}%'
+  </select>
+</mapper>

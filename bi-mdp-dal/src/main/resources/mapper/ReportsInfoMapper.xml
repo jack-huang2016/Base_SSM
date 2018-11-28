@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yougou.bi.mdp.dal.database.ReportsInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.yougou.bi.mdp.common.model.ReportsInfo" >
+    <id column="REPORTS_NO" property="reportsNo" jdbcType="VARCHAR" />
+    <result column="REPORTS_NAME" property="reportsName" jdbcType="VARCHAR" />
+    <result column="REPORTS_README" property="reportsReadme" jdbcType="VARCHAR" />
+    <result column="FLAG" property="flag" jdbcType="DECIMAL" />
+    <result column="STATUS" property="status" jdbcType="DECIMAL" />
+    <result column="EDITOR" property="editor" jdbcType="VARCHAR" />
+    <result column="EDITTM" property="edittm" jdbcType="TIMESTAMP" />
+    <result column="PIC_FLAG" property="picFlag" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    REPORTS_NO, REPORTS_NAME, REPORTS_README, FLAG, STATUS, EDITOR, EDITTM
+  </sql>
+  <sql id="condition" >
+    <if test="null!=params" >
+      <if test="null!=params.queryCondition and ''!=params.queryCondition" >
+        ${params.queryCondition}
+      </if>
+      <if test="null!=params.reportsNameLike and ''!=params.reportsNameLike" >
+         and REPORTS_NAME like  '%${params.reportsNameLike}%'
+      </if>
+      <if test="null!=params.startTime and ''!=params.startTime" >
+         and EDITTM &gt;= to_date(#{params.startTime},'yyyy-mm-dd')
+      </if>
+      <if test="null!=params.endTime and ''!=params.endTime" >
+         and EDITTM &lt;= to_date(#{params.endTime},'yyyy-mm-dd') 
+      </if>
+      <if test="null!=params.status and ''!=params.status" >
+         and status = #{params.status}
+      </if>
+      <if test="null!=params.reportsNo and ''!=params.reportsNo" >
+         and REPORTS_NO = #{params.reportsNo}
+      </if>               
+    </if>
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    SELECT 
+    <include refid="Base_Column_List" />
+    FROM U_DB_PT.REPORTS_INFO
+    WHERE REPORTS_NO = #{reportsNo,jdbcType=VARCHAR}
+    
+  </select>
+  <select id="selectCount" resultType="java.lang.Integer" >
+    SELECT COUNT(1) as s FROM U_DB_PT.REPORTS_INFO WHERE 1=1
+      AND FLAG = 1
+    <include refid="condition" />
+  </select>
+  
+    <select id="getReports" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    SELECT 
+    <include refid="Base_Column_List" />
+    FROM U_DB_PT.REPORTS_INFO
+    WHERE REPORTS_NO = #{str,jdbcType=VARCHAR}
+  </select>
+    <select id="selectReports" resultMap="BaseResultMap" parameterType="map" >
+       select  B.* from (select A.*,ROWNUM rn  from (
+	    SELECT 
+	    <include refid="Base_Column_List" />
+	     FROM U_DB_PT.REPORTS_INFO WHERE 1=1
+	      AND FLAG = 1 
+	    <include refid="condition" />
+	    order by 
+	    <if test="orderByField != null and ''!=orderByField" >
+	      <if test="orderByField == 'reportsName'" >
+	        REPORTS_NAME
+	      </if>
+	      <if test="orderByField == 'editor'" >
+	        editor
+	      </if>      
+	      <if test="orderByField == 'edittm'" >
+	        edittm
+	      </if>
+	      <if test="orderByField == 'status'" >
+	        status
+	      </if>      
+	      <if test="orderByField" >
+	        ${orderBy},
+	      </if>
+	    </if>
+	    edittm desc
+	    )A WHERE rownum &lt;= #{page.pageSize}) B  WHERE rn &gt; #{page.startRowNum}
+  </select>
+  <select id="selectByPage1" resultMap="BaseResultMap" parameterType="map" >
+     select  B.* from (select A.*,ROWNUM rn  from (
+	     SELECT REPORTS_NO, REPORTS_NAME, FLAG, STATUS, EDITOR, EDITTM, PIC_FLAG 
+			FROM U_DB_PT.REPORTS_INFO WHERE 1=1 AND FLAG = 1 
+	    	<include refid="condition" />
+	  		order by
+	   		<if test="orderByField != null and ''!=orderByField" >
+		      <if test="orderByField == 'reportsName'" >
+		        REPORTS_NAME
+		      </if>
+		      <if test="orderByField == 'editor'" >
+		        editor
+		      </if>      
+		      <if test="orderByField == 'edittm'" >
+		        edittm
+		      </if>
+		      <if test="orderByField == 'status'" >
+		        status
+		      </if>      
+		      <if test="orderByField" >
+		        ${orderBy},
+		      </if>
+	   	 </if>
+	    edittm desc
+		)A WHERE rownum &lt;= #{params.pageSize}) B  WHERE rn &gt; #{params.startRowNum}
+  </select>
+  
+  <select id="getCombobox" resultMap="BaseResultMap" parameterType="map" >
+    SELECT distinct
+    <include refid="Base_Column_List" />
+     FROM U_DB_PT.REPORTS_INFO WHERE 1=1 
+     AND FLAG = 1
+    <include refid="condition" />
+  </select>
+  
+  <select id="selectByParams" resultMap="BaseResultMap" parameterType="map" >
+    SELECT distinct
+    <include refid="Base_Column_List" />
+     FROM U_DB_PT.REPORTS_INFO WHERE 1=1 
+     AND FLAG != 1
+    <include refid="condition" />
+  </select>
+  
+   <select id="selectByParams1" resultMap="BaseResultMap" parameterType="map" >
+    SELECT distinct
+    <include refid="Base_Column_List" />
+     FROM U_DB_PT.REPORTS_INFO WHERE 1=1 
+     AND FLAG != 1
+    <include refid="condition" />
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    DELETE FROM U_DB_PT.REPORTS_INFO
+    WHERE REPORTS_NO = #{reportsNo,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByPrimarayKeyForModel" parameterType="com.yougou.bi.mdp.common.model.ReportsInfo" >
+    DELETE FROM U_DB_PT.REPORTS_INFO
+    WHERE REPORTS_NO = #{reportsNo,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yougou.bi.mdp.common.model.ReportsInfo" >
+    INSERT INTO U_DB_PT.REPORTS_INFO (REPORTS_NO, REPORTS_NAME, REPORTS_README, 
+      FLAG, STATUS, EDITOR, 
+      EDITTM)
+    VALUES (#{reportsNo,jdbcType=VARCHAR}, #{reportsName,jdbcType=VARCHAR}, #{reportsReadme,jdbcType=VARCHAR}, 
+      #{flag,jdbcType=DECIMAL}, #{status,jdbcType=DECIMAL}, #{editor,jdbcType=VARCHAR}, 
+      #{edittm,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yougou.bi.mdp.common.model.ReportsInfo" >
+    INSERT INTO U_DB_PT.REPORTS_INFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="reportsNo != null" >
+        REPORTS_NO,
+      </if>
+      <if test="reportsName != null" >
+        REPORTS_NAME,
+      </if>
+      <if test="reportsReadme != null" >
+        REPORTS_README,
+      </if>
+      <if test="flag != null" >
+        FLAG,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="editor != null" >
+        EDITOR,
+      </if>
+      <if test="edittm != null" >
+        EDITTM,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="reportsNo != null" >
+        #{reportsNo,jdbcType=VARCHAR},
+      </if>
+      <if test="reportsName != null" >
+        #{reportsName,jdbcType=VARCHAR},
+      </if>
+      <if test="reportsReadme != null" >
+        #{reportsReadme,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        #{flag,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=DECIMAL},
+      </if>
+      <if test="editor != null" >
+        #{editor,jdbcType=VARCHAR},
+      </if>
+      <if test="edittm != null" >
+        #{edittm,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective1" parameterType="com.yougou.bi.mdp.common.model.ReportsInfo" >
+    UPDATE U_DB_PT.REPORTS_INFO
+    <set >
+      <if test="reportsName != null" >
+        REPORTS_NAME = #{reportsName,jdbcType=VARCHAR},
+      </if>
+      <if test="reportsReadme != null" >
+        REPORTS_README = #{reportsReadme,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        FLAG = #{flag,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=DECIMAL},
+      </if>
+      <if test="editor != null" >
+        EDITOR = #{editor,jdbcType=VARCHAR},
+      </if>
+      <if test="edittm != null" >
+        EDITTM = #{edittm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="picFlag != null" >
+        PIC_FLAG = #{picFlag,jdbcType=DECIMAL},
+      </if>
+    </set>
+    WHERE REPORTS_NO = #{reportsNo,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yougou.bi.mdp.common.model.ReportsInfo" >
+    UPDATE U_DB_PT.REPORTS_INFO
+    SET REPORTS_NAME = #{reportsName,jdbcType=VARCHAR},
+      REPORTS_README = #{reportsReadme,jdbcType=VARCHAR},
+      FLAG = #{flag,jdbcType=DECIMAL},
+      STATUS = #{status,jdbcType=DECIMAL},
+      EDITOR = #{editor,jdbcType=VARCHAR},
+      EDITTM = #{edittm,jdbcType=TIMESTAMP}
+    WHERE REPORTS_NO = #{reportsNo,jdbcType=VARCHAR}
+  </update>
+  
+  <update id="synchronousMenuUpdata1">
+    update u_db_pt.reports_info set reports_name = #{text} where reports_no=#{id}
+  </update>
+  <update id="synchronousMenuInsert1">
+	INSERT INTO u_db_pt.reports_info(reports_no, reports_name, reports_readme, flag, status, editor)
+    VALUES (#{id}, #{text}, '', 0, 1, 'retail_uc')
+  </update>
+  <delete id="synchronousMenuDelete1">
+  	delete from u_db_pt.reports_info where reports_name = #{text} and reports_no&lt;&gt;#{id}
+  </delete>
+  
+  
+</mapper>

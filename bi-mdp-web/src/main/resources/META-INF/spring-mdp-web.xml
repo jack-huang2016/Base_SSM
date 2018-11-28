@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+            http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.2.xsd
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+	
+	<!-- 加载依赖manager层配置 -->
+	<import resource="classpath*:META-INF/spring-mdp-manager.xml" />
+	
+	<!-- redis  工具类配置 -->
+	<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+        <property name="maxActive" value="${redis.conf.maxActive}" />
+        <property name="maxIdle" value="${redis.conf.maxIdle}" />
+        <property name="maxWait" value="${redis.conf.maxWait}" />
+        <property name="testOnBorrow" value="${redis.conf.testOnBorrow}" />
+    </bean>   
+ 
+    <!-- redis的连接池pool，不是必选项：timeout/password -->
+    <bean id="jedisPool" class="redis.clients.jedis.JedisPool">
+        <constructor-arg index="0" ref="jedisPoolConfig" />
+        <constructor-arg index="1" value="${redis.host}" />
+        <constructor-arg index="2" value="${redis.port}" type="int" />
+        <constructor-arg index="3" value="${redis.conf.timeout}" type="int" />
+    </bean>
+    <!-- redis 工具类配置完成 -->
+	
+	<bean id="aopLog4Freport" class="com.yougou.bi.mdp.web.syslog.SystemLog4Freport"></bean>  
+
+    <aop:config>  
+        <aop:aspect ref="aopLog4Freport">  
+        	<aop:around method="runOnAround" pointcut="execution (* com.yougou.bi.mdp.web.controller.freport.*.search(..))"/>
+        	<aop:around method="runOnAround" pointcut="execution (* com.yougou.bi.mdp.web.controller.freport.*.searchForDownload(..))"/>
+        </aop:aspect>   
+    </aop:config>  
+</beans>

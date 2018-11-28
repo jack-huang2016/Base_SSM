@@ -1,0 +1,1137 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yougou.bi.mdp.dal.database.DimOrgAllinfoMapper" >
+  <resultMap id="BaseResultMap" type="com.yougou.bi.mdp.common.model.DimOrgAllinfo" >
+    <id column="ORGAN_NO" property="organNo" jdbcType="VARCHAR" />
+    <result column="ORGAN_LNO" property="organLno" jdbcType="VARCHAR" />
+    <result column="ORGAN_NAME" property="organName" jdbcType="VARCHAR" />
+    <result column="ORGAN_FLAG" property="organFlag" jdbcType="DECIMAL" />
+    <result column="BRAND_DETAIL_NO" property="brandDetailNo" jdbcType="VARCHAR" />
+    <result column="BRAND_DETAIL_ENAME" property="brandDetailEname" jdbcType="VARCHAR" />
+    <result column="BRAND_DETAIL_CNAME" property="brandDetailCname" jdbcType="VARCHAR" />
+    <result column="REGION_NO" property="regionNo" jdbcType="VARCHAR" />
+    <result column="REGION_NAME" property="regionName" jdbcType="VARCHAR" />
+    <result column="MANAGING_PROVINCE_NO" property="managingProvinceNo" jdbcType="VARCHAR" />
+    <result column="MANAGING_PROVINCE_NAME" property="managingProvinceName" jdbcType="VARCHAR" />
+    <result column="MANAGING_AREA_NO" property="managingAreaNo" jdbcType="VARCHAR" />
+    <result column="MANAGING_AREA_NAME" property="managingAreaName" jdbcType="VARCHAR" />
+    <result column="MANAGING_CITY_NO" property="managingCityNo" jdbcType="VARCHAR" />
+    <result column="MANAGING_CITY_NAME" property="managingCityName" jdbcType="VARCHAR" />
+    <result column="BUSINESS_CITY_NO" property="businessCityNo" jdbcType="VARCHAR" />
+    <result column="BUSINESS_CITY_NAME" property="businessCityName" jdbcType="VARCHAR" />
+    <result column="ORDER_UNIT_NO" property="orderUnitNo" jdbcType="VARCHAR" />
+    <result column="ORDER_UNIT_NAME" property="orderUnitName" jdbcType="VARCHAR" />
+    <result column="PROVINCE_NO" property="provinceNo" jdbcType="VARCHAR" />
+    <result column="PROVINCE_NAME" property="provinceName" jdbcType="VARCHAR" />
+    <result column="CITY_NO" property="cityNo" jdbcType="VARCHAR" />
+    <result column="CITY_NAME" property="cityName" jdbcType="VARCHAR" />
+    <result column="COUNTY_NO" property="countyNo" jdbcType="VARCHAR" />
+    <result column="COUNTY_NAME" property="countyName" jdbcType="VARCHAR" />
+    <result column="PART_AREA_NO" property="partAreaNo" jdbcType="VARCHAR" />
+    <result column="PART_AREA_NAME" property="partAreaName" jdbcType="VARCHAR" />
+    <result column="BUSINESS_CIRCLE_NO" property="businessCircleNo" jdbcType="VARCHAR" />
+    <result column="BUSINESS_CIRCLE_NAME" property="businessCircleName" jdbcType="VARCHAR" />
+    <result column="STORE_LEVEL" property="storeLevel" jdbcType="VARCHAR" />
+    <result column="OPENDT" property="opendt" jdbcType="CHAR" />
+    <result column="CLOSEDT" property="closedt" jdbcType="CHAR" />
+    <result column="MALL_NO" property="mallNo" jdbcType="VARCHAR" />
+    <result column="MALL_NAME" property="mallName" jdbcType="VARCHAR" />
+    <result column="BUSINESS_GROUP_NO" property="businessGroupNo" jdbcType="VARCHAR" />
+    <result column="BUSINESS_GROUP_NAME" property="businessGroupName" jdbcType="VARCHAR" />
+    <result column="LOCATION_NO" property="locationNo" jdbcType="VARCHAR" />
+    <result column="LOCATION_NAME" property="locationName" jdbcType="VARCHAR" />
+    <result column="STORE_CATEGORY_NO1" property="storeCategoryNo1" jdbcType="VARCHAR" />
+    <result column="STORE_CATEGORY_NAME1" property="storeCategoryName1" jdbcType="VARCHAR" />
+    <result column="STORE_CATEGORY_NO2" property="storeCategoryNo2" jdbcType="VARCHAR" />
+    <result column="STORE_CATEGORY_NAME2" property="storeCategoryName2" jdbcType="VARCHAR" />
+    <result column="STORE_CATEGORY_NO3" property="storeCategoryNo3" jdbcType="VARCHAR" />
+    <result column="STORE_CATEGORY_NAME3" property="storeCategoryName3" jdbcType="VARCHAR" />
+    <result column="STORE_CHANNEL_NO" property="storeChannelNo" jdbcType="VARCHAR" />
+    <result column="STORE_CHANNEL_NAME" property="storeChannelName" jdbcType="VARCHAR" />
+    <result column="STORE_CHANNEL_NO2" property="storeChannelNo2" jdbcType="VARCHAR" />
+    <result column="STORE_CHANNEL_NAME2" property="storeChannelName2" jdbcType="VARCHAR" />
+    <result column="STORE_CHANNEL_NO3" property="storeChannelNo3" jdbcType="VARCHAR" />
+    <result column="STORE_CHANNEL_NAME3" property="storeChannelName3" jdbcType="VARCHAR" />
+    <result column="CATEGORY_NO" property="categoryNo" jdbcType="VARCHAR" />
+    <result column="CATEGORY_NAME" property="categoryName" jdbcType="VARCHAR" />
+    <result column="SUBAREA_NO" property="subAreaNo" jdbcType="VARCHAR" />
+    <result column="SUBAREA_NAME" property="subAreaName" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  
+  <resultMap id="salGenerMap" type="com.yougou.bi.mdp.common.model.DimSaleGenre" >
+    <result column="BRAND_DETAIL_NO" property="brandNoDetailNo" jdbcType="VARCHAR" />
+    <result column="SAL_GENRE_NO" property="salGenreNo" jdbcType="VARCHAR" />
+    <result column="SAL_GENRE_NAME" property="salGenreName" jdbcType="VARCHAR" />
+  </resultMap>
+  
+   <resultMap id="styleSourceMap" type="com.yougou.bi.mdp.common.model.DimStyleSource" >
+    <result column="BRAND_DETAIL_NO" property="brandNoDetailNo" jdbcType="VARCHAR" />
+    <result column="STYLE_SOURCE_NO" property="styleSourceNo" jdbcType="VARCHAR" />
+    <result column="STYLE_SOURCE_NAME" property="styleSourceName" jdbcType="VARCHAR" />
+  </resultMap>
+  
+    <resultMap id="largeCategoryMap" type="com.yougou.bi.mdp.common.model.DimLargeCategory" >
+    <result column="BRAND_DETAIL_NO" property="brandNoDetailNo" jdbcType="VARCHAR" />
+    <result column="LARGE_CATEGORY_NO" property="largeCategoryNo" jdbcType="VARCHAR" />
+    <result column="LARGE_CATEGORY_NAME" property="largeCategoryName" jdbcType="VARCHAR" />
+  </resultMap>
+  
+    <resultMap id="rdsiteMap" type="com.yougou.bi.mdp.common.model.DimRdsite" >
+    <result column="BRAND_DETAIL_NO" property="brandNoDetailNo" jdbcType="VARCHAR" />
+    <result column="RD_SITE_NO" property="rdsiteNo" jdbcType="VARCHAR" />
+    <result column="RD_SITE_NAME" property="rdsiteName" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  
+  
+  
+  <sql id="Base_Column_List" >
+    ORGAN_NO, ORGAN_LNO, ORGAN_NAME, ORGAN_FLAG, BRAND_DETAIL_NO, BRAND_DETAIL_ENAME, 
+    BRAND_DETAIL_CNAME, REGION_NO, REGION_NAME, MANAGING_PROVINCE_NO, MANAGING_PROVINCE_NAME, 
+    MANAGING_AREA_NO, MANAGING_AREA_NAME, MANAGING_CITY_NO, MANAGING_CITY_NAME, BUSINESS_CITY_NO, 
+    BUSINESS_CITY_NAME, ORDER_UNIT_NO, ORDER_UNIT_NAME, PROVINCE_NO, PROVINCE_NAME, CITY_NO, 
+    CITY_NAME, COUNTY_NO, COUNTY_NAME, PART_AREA_NO, PART_AREA_NAME, BUSINESS_CIRCLE_NO, 
+    BUSINESS_CIRCLE_NAME, STORE_LEVEL, OPENDT, CLOSEDT, MALL_NO, MALL_NAME, BUSINESS_GROUP_NO, 
+    BUSINESS_GROUP_NAME, LOCATION_NO, LOCATION_NAME, STORE_CATEGORY_NO1, STORE_CATEGORY_NAME1, 
+    STORE_CATEGORY_NO2, STORE_CATEGORY_NAME2, STORE_CATEGORY_NO3, STORE_CATEGORY_NAME3, 
+    STORE_CHANNEL_NO, STORE_CHANNEL_NAME, STORE_CHANNEL_NO2, STORE_CHANNEL_NAME2, STORE_CHANNEL_NO3, 
+    STORE_CHANNEL_NAME3, CATEGORY_NO, CATEGORY_NAME, SUBAREA_NO, SUBAREA_NAME
+  </sql>
+  <sql id="condition" >
+    <if test="null!=params" >
+      <if test="null!=params.queryCondition and ''!=params.queryCondition" >
+        ${params.queryCondition}
+      </if>
+    </if>
+  </sql>
+    <select id="selectBusinessCity" resultMap="BaseResultMap" parameterType="map" >
+   	select distinct t.business_city_no,t.business_city_name,t.BUSINESS_CITY_ORDER,t.MANAGING_CITY_NO from u_md_dm.dim_org_allinfo t where 1=1  and business_city_no is not null
+   <if test="null!=params" >
+      <if test="null!=params.managing_cities and ''!=params.managing_cities" >
+        and MANAGING_CITY_NO in (${params.managing_cities})
+      </if>
+       <if test="null!=params.brandNo and ''!=params.brandNo" >
+        and BRAND_NO in ${params.brandNo}
+      </if>
+      <if test="null!=params.MANAGING_CITY_NO and ''!=params.MANAGING_CITY_NO" >
+        and MANAGING_CITY_NO in (${params.MANAGING_CITY_NO})
+      </if>
+       <if test="null!=params.REGION_NO and ''!=params.REGION_NO" >
+        and REGION_NO in (${params.REGION_NO})
+      </if>
+      <if test="null!=params.MANAGING_PROVINCE_NO and ''!=params.MANAGING_PROVINCE_NO" >
+        and MANAGING_PROVINCE_NO in (${params.MANAGING_PROVINCE_NO})
+      </if>
+       <if test="null!=params.MANAGING_AREA_NO and ''!=params.MANAGING_AREA_NO" >
+        and MANAGING_AREA_NO in (${params.MANAGING_AREA_NO})
+      </if>
+    </if>
+    order by 	t.BUSINESS_CITY_ORDER
+  </select>
+  
+   <select id="getSubArea" resultMap="BaseResultMap" parameterType="map" >
+   	  select distinct t.subarea_no,t.subarea_name,t.subarea_order from u_md_dm.dim_org_allinfo t where 1=1 and t.subarea_no is not null
+      <if test="null!=params" >
+	      <if test="null!=params.managing_cities and ''!=params.managing_cities" >
+	        and MANAGING_CITY_NO in (${params.managing_cities})
+	      </if>
+	       <if test="null!=params.brandNo and ''!=params.brandNo" >
+	        and BRAND_NO in ${params.brandNo}
+	      </if>
+	      <if test="null!=params.MANAGING_CITY_NO and ''!=params.MANAGING_CITY_NO" >
+	        and MANAGING_CITY_NO in (${params.MANAGING_CITY_NO})
+	      </if>
+	      <if test="null!=params.REGION_NO and ''!=params.REGION_NO" >
+	        and REGION_NO in (${params.REGION_NO})
+	      </if>
+	      <if test="null!=params.MANAGING_PROVINCE_NO and ''!=params.MANAGING_PROVINCE_NO" >
+	        and MANAGING_PROVINCE_NO in (${params.MANAGING_PROVINCE_NO})
+	      </if>
+	       <if test="null!=params.MANAGING_AREA_NO and ''!=params.MANAGING_AREA_NO" >
+	        and MANAGING_AREA_NO in (${params.MANAGING_AREA_NO})
+	      </if>
+      </if>
+      order by t.subarea_order
+  </select>
+
+	<select id="getBusinessCityNew" resultMap="BaseResultMap" parameterType="map">
+		select distinct t.business_city_no,t.business_city_name from
+		u_md_dm.dim_org_allinfo t where 1=1 and business_city_no is not null
+		<if test="null!=params.managing_cities and ''!=params.managing_cities">
+			AND t.managing_city_no in
+			<foreach item="item" index="index" collection="params.managing_cities" open="(" separator="," close=")">
+		      	#{item}
+			</foreach>
+		</if>
+		<if test="null!=params.brand_detail_enames and ''!=params.brand_detail_enames">
+			AND t.brand_detail_no in
+			<foreach item="item" index="index" collection="params.brand_detail_enames" open="(" separator="," close=")">
+		      	#{item}
+			</foreach>
+		</if>
+		<if test="(null==params.managing_cities or ''==params.managing_cities) and 'yes'==params.managing_cities_exist">
+			AND 1=2
+		</if>
+		
+		    ORDER BY business_city_name DESC
+	</select>
+  
+	<select id="selectPartArea" resultMap="BaseResultMap" parameterType="map" >
+		select distinct t.PART_AREA_NO,t.PART_AREA_NAME,t.PART_AREA_ORDER from u_md_dm.dim_org_allinfo t where 1=1 and PART_AREA_NO is not null 
+		<if test="null!=params.REGION_NO and ''!=params.REGION_NO" >
+        	and t.REGION_NO in (${params.REGION_NO})
+		</if>
+		<if test="null!=params.MANAGING_CITY_NO and ''!=params.MANAGING_CITY_NO">
+		    and t.MANAGING_CITY_NO in (${params.MANAGING_CITY_NO})
+		</if>
+		<if test="null!=params.BRAND_DETAIL_NO and ''!=params.BRAND_DETAIL_NO">
+		    and t.BRAND_DETAIL_NO in (${params.BRAND_DETAIL_NO})
+		</if>
+		<!-- 品牌部单选 -->
+		<if test="null!=params.brand_no and ''!=params.brand_no">
+			AND t.brand_no = #{params.brand_no}
+		</if>
+		<if test="(null==params.brand_no or ''==params.brand_no) and 'yes'==params.brand_no_exist">
+			AND 1=2
+		</if>
+		<!-- 品牌部多选 -->
+		<if test="null!=params.brand_noes and ''!=params.brand_noes">
+			AND t.brand_no in
+			<foreach item="item" index="index" collection="params.brand_noes" open="(" separator="," close=")">
+		      	#{item}
+			</foreach>
+		</if>
+		<if test="(null==params.brand_noes or ''==params.brand_noes) and 'yes'==params.brand_noes_exist">
+			AND 1=2
+		</if>
+		<!-- 地区多选 -->
+		<if test="null!=params.managing_regions and ''!=params.managing_regions">
+			AND t.region_no in
+			<foreach item="item" index="index" collection="params.managing_regions" open="(" separator="," close=")">
+            	#{item}
+            </foreach>
+   		</if>
+   		<if test="(null==params.managing_regions or ''==params.managing_regions) and 'yes'==params.managing_regions_exist">
+			AND 1=2
+		</if>
+		order by t.PART_AREA_ORDER
+	</select>
+	
+	<select id="selectBusinessCircle" resultMap="BaseResultMap" parameterType="map" >
+		select distinct t.business_circle_no,t.business_circle_name,t.BUSINESS_CIRCLE_ORDER from u_md_dm.dim_org_allinfo t  where 1=1 and business_circle_no is not null 
+		<if test="null!=params.REGION_NO and ''!=params.REGION_NO" >
+        	and REGION_NO in (${params.REGION_NO})
+		</if>
+		<if test="null!=params.managing_cities and ''!=params.managing_cities">
+			AND t.managing_city_no in
+			<foreach item="item" index="index" collection="params.managing_cities" open="(" separator="," close=")">
+		      	#{item}
+			</foreach>
+		</if>
+		<if test="null!=params.brand_noes and ''!=params.brand_noes">
+			AND t.brand_no in
+			<foreach item="item" index="index" collection="params.brand_noes" open="(" separator="," close=")">
+		      	#{item}
+			</foreach>
+		</if>
+		<if test="(null==params.managing_cities or ''==params.managing_cities) and 'yes'==params.managing_cities_exist">
+			AND 1=2
+		</if>
+		ORDER BY t.BUSINESS_CIRCLE_ORDER
+	</select>
+  
+    <select id="selectMall" resultMap="BaseResultMap" parameterType="map" >
+		SELECT DISTINCT
+			T .MALL_NO,
+			T .MALL_NAME,
+			T .business_city_no
+		FROM
+			u_md_dm.dim_org_allinfo T
+		WHERE
+			1 = 1
+		AND MALL_NO IS NOT NULL
+		<if test="null!=params.REGION_NO and ''!=params.REGION_NO" >
+        and REGION_NO in (${params.REGION_NO})
+      </if>
+		ORDER BY
+			business_city_no
+  </select>
+  
+  <select id="selectMallNoByName" resultType="java.lang.String" parameterType="java.lang.String">
+		select distinct MALL_NO from u_md_dm.dim_org_allinfo where 1=1
+        and MALL_NAME = #{value}
+  </select>
+  
+    <select id="selectRegionNameForLog" resultType="java.lang.String" parameterType="map">
+    select wm_concat(region_name) from (
+		select distinct region_name as region_name from u_md_dm.dim_org_allinfo where 1=1
+       	 <if test="null!=params" >
+      <if test="null!=params.managing_city_no and ''!=params.managing_city_no" >
+        	and managing_city_no = #{params.managing_city_no}
+      </if>
+      <if test="null!=params.business_city_no and ''!=params.business_city_no" >
+        	and business_city_no = #{params.business_city_no}
+      </if>
+      <if test="null!=params.organ_no and ''!=params.organ_no" >
+       		and organ_no = #{params.organ_no}
+      </if>
+    </if>
+    )
+  </select>
+  
+  	<!-- 通过品牌编号、管理城市名称 查询管理城市编号 -->
+	<select id="selectManagingCityNo" resultType="java.lang.String" parameterType="map">
+		select distinct s.managing_city_no from u_md_dm.dim_org_allinfo s
+ 		where 1=1 
+	 		and s.organ_new_no = #{params.organ_new_no}
+	   		and s.brand_detail_no = #{params.brand_detail_no}
+	   		and s.managing_city_name = #{params.managing_city_name}
+	</select>
+	
+    <select id="selectBusinessGroup" resultMap="BaseResultMap" parameterType="map">
+		select distinct t.BUSINESS_GROUP_NO,t.BUSINESS_GROUP_NAME,T.BUSINESS_GROUP_ORDER from u_md_dm.dim_org_allinfo t where 1=1 and BUSINESS_GROUP_NO is not null 
+		 <if test="null!=params.REGION_NO and ''!=params.REGION_NO" >
+        and REGION_NO in (${params.REGION_NO})
+      </if>
+      ORDER BY T.BUSINESS_GROUP_ORDER
+  </select>
+   <select id="selectLocation" resultMap="BaseResultMap" parameterType="map" >
+		select distinct t.LOCATION_NO,t.LOCATION_NAME,t.location_order 
+		from u_md_dm.dim_org_allinfo t
+		where t.LOCATION_NO is not null
+		 order by t.location_order
+  </select>
+  <select id="selectCategory" resultMap="BaseResultMap" parameterType="map" >
+		select distinct t.CATEGORY_NO,t.CATEGORY_NAME from u_md_dm.dim_org_allinfo t
+  </select>
+  
+  <!-- 取行政县-->
+  <select id="selectCounties" resultMap="BaseResultMap" parameterType="map" >
+		SELECT DISTINCT s.COUNTY_NO, s.COUNTY_NAME from u_md_dm.dim_org_store_allinfo s 
+ 		WHERE
+			s.city_no is not null
+			AND s.county_name is not null
+			<if test="null!=params.managing_regions and ''!=params.managing_regions">
+				AND s.region_no in
+				<foreach item="item" index="index" collection="params.managing_regions" open="(" separator="," close=")">
+	            	#{item}
+	            </foreach>
+    		</if>
+    		<if test="(null==params.managing_regions or ''==params.managing_regions) and 'yes'==params.managing_regions_exist">
+				AND 1=2
+    		</if>
+  </select>
+  <!-- 取经营品类-->
+  <select id="selectCategoryNo" resultMap="BaseResultMap" parameterType="map" >
+		select distinct t.CATEGORY_NO,t.CATEGORY_NAME from u_md_dm.dim_org_allinfo t WHERE T.CATEGORY_NO IS NOT NULL
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    SELECT 
+    <include refid="Base_Column_List" />
+    FROM U_MD_DM.DIM_ORG_ALLINFO
+    WHERE ORGAN_NO = #{organNo,jdbcType=VARCHAR}
+  </select>
+   <select id="getQueryManageCity" resultMap="BaseResultMap" parameterType="map" >
+   select distinct substr(t.region_no,3,1) region_no,t.region_name,t.managing_city_no,t.managing_city_name from u_md_dm.dim_org_mgmt_area t
+    <if test="null!=params.regionNo and ''!=params.regionNo">
+     	 WHERE t.REGION_NO = #{regionNo}
+    </if>
+    order by substr(t.region_no,3,1),t.managing_city_no
+  </select>
+  <select id="selectCount" resultType="java.lang.Integer" >
+    SELECT COUNT(1) as s FROM U_MD_DM.DIM_ORG_ALLINFO WHERE 1=1 
+    <include refid="condition" />
+  </select>
+  <select id="selectByPage" resultMap="BaseResultMap" parameterType="map" >
+    SELECT B.* from (SELECT A.*,ROWNUM rn FROM( SELECT 
+    <include refid="Base_Column_List" />
+     FROM U_MD_DM.DIM_ORG_ALLINFO WHERE 1=1 
+    <include refid="condition" />
+    <if test="orderByField != null and ''!=orderByField" >
+      ORDER BY ${orderByField}
+      <if test="orderByField" >
+        ${orderBy}
+      </if>
+    </if>
+    ) A WHERE ROWNUM &lt; #{page.endRowNum}) B WHERE rn &gt; #{page.startRowNum}
+  </select>
+  <select id="selectByParams" resultMap="BaseResultMap" parameterType="map" >
+    SELECT 
+    <include refid="Base_Column_List" />
+     FROM U_MD_DM.DIM_ORG_ALLINFO WHERE 1=1 
+    <include refid="condition" />
+  </select>
+  
+  <select id="selectStoreCategoryNo1" resultMap="BaseResultMap" parameterType="map" >
+    select distinct store_category_no1,store_category_name1 from U_MD_DM.DIM_ORG_ALLINFO
+     order by store_category_no1
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    DELETE FROM U_MD_DM.DIM_ORG_ALLINFO
+    WHERE ORGAN_NO = #{organNo,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByPrimarayKeyForModel" parameterType="com.yougou.bi.mdp.common.model.DimOrgAllinfo" >
+    DELETE FROM U_MD_DM.DIM_ORG_ALLINFO
+    WHERE ORGAN_NO = #{organNo,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yougou.bi.mdp.common.model.DimOrgAllinfo" >
+    INSERT INTO U_MD_DM.DIM_ORG_ALLINFO (ORGAN_NO, ORGAN_LNO, ORGAN_NAME, 
+      ORGAN_FLAG, BRAND_DETAIL_NO, BRAND_DETAIL_ENAME, 
+      BRAND_DETAIL_CNAME, REGION_NO, REGION_NAME, 
+      MANAGING_PROVINCE_NO, MANAGING_PROVINCE_NAME, 
+      MANAGING_AREA_NO, MANAGING_AREA_NAME, MANAGING_CITY_NO, 
+      MANAGING_CITY_NAME, BUSINESS_CITY_NO, BUSINESS_CITY_NAME, 
+      ORDER_UNIT_NO, ORDER_UNIT_NAME, PROVINCE_NO, 
+      PROVINCE_NAME, CITY_NO, CITY_NAME, 
+      COUNTY_NO, COUNTY_NAME, PART_AREA_NO, 
+      PART_AREA_NAME, BUSINESS_CIRCLE_NO, BUSINESS_CIRCLE_NAME, 
+      STORE_LEVEL, OPENDT, CLOSEDT, 
+      MALL_NO, MALL_NAME, BUSINESS_GROUP_NO, 
+      BUSINESS_GROUP_NAME, LOCATION_NO, LOCATION_NAME, 
+      STORE_CATEGORY_NO1, STORE_CATEGORY_NAME1, STORE_CATEGORY_NO2, 
+      STORE_CATEGORY_NAME2, STORE_CATEGORY_NO3, STORE_CATEGORY_NAME3, 
+      STORE_CHANNEL_NO, STORE_CHANNEL_NAME, STORE_CHANNEL_NO2, 
+      STORE_CHANNEL_NAME2, STORE_CHANNEL_NO3, STORE_CHANNEL_NAME3, 
+      CATEGORY_NO, CATEGORY_NAME)
+    VALUES (#{organNo,jdbcType=VARCHAR}, #{organLno,jdbcType=VARCHAR}, #{organName,jdbcType=VARCHAR}, 
+      #{organFlag,jdbcType=DECIMAL}, #{brandDetailNo,jdbcType=VARCHAR}, #{brandDetailEname,jdbcType=VARCHAR}, 
+      #{brandDetailCname,jdbcType=VARCHAR}, #{regionNo,jdbcType=VARCHAR}, #{regionName,jdbcType=VARCHAR}, 
+      #{managingProvinceNo,jdbcType=VARCHAR}, #{managingProvinceName,jdbcType=VARCHAR}, 
+      #{managingAreaNo,jdbcType=VARCHAR}, #{managingAreaName,jdbcType=VARCHAR}, #{managingCityNo,jdbcType=VARCHAR}, 
+      #{managingCityName,jdbcType=VARCHAR}, #{businessCityNo,jdbcType=VARCHAR}, #{businessCityName,jdbcType=VARCHAR}, 
+      #{orderUnitNo,jdbcType=VARCHAR}, #{orderUnitName,jdbcType=VARCHAR}, #{provinceNo,jdbcType=VARCHAR}, 
+      #{provinceName,jdbcType=VARCHAR}, #{cityNo,jdbcType=VARCHAR}, #{cityName,jdbcType=VARCHAR}, 
+      #{countyNo,jdbcType=VARCHAR}, #{countyName,jdbcType=VARCHAR}, #{partAreaNo,jdbcType=VARCHAR}, 
+      #{partAreaName,jdbcType=VARCHAR}, #{businessCircleNo,jdbcType=VARCHAR}, #{businessCircleName,jdbcType=VARCHAR}, 
+      #{storeLevel,jdbcType=VARCHAR}, #{opendt,jdbcType=CHAR}, #{closedt,jdbcType=CHAR}, 
+      #{mallNo,jdbcType=VARCHAR}, #{mallName,jdbcType=VARCHAR}, #{businessGroupNo,jdbcType=VARCHAR}, 
+      #{businessGroupName,jdbcType=VARCHAR}, #{locationNo,jdbcType=VARCHAR}, #{locationName,jdbcType=VARCHAR}, 
+      #{storeCategoryNo1,jdbcType=VARCHAR}, #{storeCategoryName1,jdbcType=VARCHAR}, #{storeCategoryNo2,jdbcType=VARCHAR}, 
+      #{storeCategoryName2,jdbcType=VARCHAR}, #{storeCategoryNo3,jdbcType=VARCHAR}, #{storeCategoryName3,jdbcType=VARCHAR}, 
+      #{storeChannelNo,jdbcType=VARCHAR}, #{storeChannelName,jdbcType=VARCHAR}, #{storeChannelNo2,jdbcType=VARCHAR}, 
+      #{storeChannelName2,jdbcType=VARCHAR}, #{storeChannelNo3,jdbcType=VARCHAR}, #{storeChannelName3,jdbcType=VARCHAR}, 
+      #{categoryNo,jdbcType=VARCHAR}, #{categoryName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yougou.bi.mdp.common.model.DimOrgAllinfo" >
+    INSERT INTO U_MD_DM.DIM_ORG_ALLINFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="organNo != null" >
+        ORGAN_NO,
+      </if>
+      <if test="organLno != null" >
+        ORGAN_LNO,
+      </if>
+      <if test="organName != null" >
+        ORGAN_NAME,
+      </if>
+      <if test="organFlag != null" >
+        ORGAN_FLAG,
+      </if>
+      <if test="brandDetailNo != null" >
+        BRAND_DETAIL_NO,
+      </if>
+      <if test="brandDetailEname != null" >
+        BRAND_DETAIL_ENAME,
+      </if>
+      <if test="brandDetailCname != null" >
+        BRAND_DETAIL_CNAME,
+      </if>
+      <if test="regionNo != null" >
+        REGION_NO,
+      </if>
+      <if test="regionName != null" >
+        REGION_NAME,
+      </if>
+      <if test="managingProvinceNo != null" >
+        MANAGING_PROVINCE_NO,
+      </if>
+      <if test="managingProvinceName != null" >
+        MANAGING_PROVINCE_NAME,
+      </if>
+      <if test="managingAreaNo != null" >
+        MANAGING_AREA_NO,
+      </if>
+      <if test="managingAreaName != null" >
+        MANAGING_AREA_NAME,
+      </if>
+      <if test="managingCityNo != null" >
+        MANAGING_CITY_NO,
+      </if>
+      <if test="managingCityName != null" >
+        MANAGING_CITY_NAME,
+      </if>
+      <if test="businessCityNo != null" >
+        BUSINESS_CITY_NO,
+      </if>
+      <if test="businessCityName != null" >
+        BUSINESS_CITY_NAME,
+      </if>
+      <if test="orderUnitNo != null" >
+        ORDER_UNIT_NO,
+      </if>
+      <if test="orderUnitName != null" >
+        ORDER_UNIT_NAME,
+      </if>
+      <if test="provinceNo != null" >
+        PROVINCE_NO,
+      </if>
+      <if test="provinceName != null" >
+        PROVINCE_NAME,
+      </if>
+      <if test="cityNo != null" >
+        CITY_NO,
+      </if>
+      <if test="cityName != null" >
+        CITY_NAME,
+      </if>
+      <if test="countyNo != null" >
+        COUNTY_NO,
+      </if>
+      <if test="countyName != null" >
+        COUNTY_NAME,
+      </if>
+      <if test="partAreaNo != null" >
+        PART_AREA_NO,
+      </if>
+      <if test="partAreaName != null" >
+        PART_AREA_NAME,
+      </if>
+      <if test="businessCircleNo != null" >
+        BUSINESS_CIRCLE_NO,
+      </if>
+      <if test="businessCircleName != null" >
+        BUSINESS_CIRCLE_NAME,
+      </if>
+      <if test="storeLevel != null" >
+        STORE_LEVEL,
+      </if>
+      <if test="opendt != null" >
+        OPENDT,
+      </if>
+      <if test="closedt != null" >
+        CLOSEDT,
+      </if>
+      <if test="mallNo != null" >
+        MALL_NO,
+      </if>
+      <if test="mallName != null" >
+        MALL_NAME,
+      </if>
+      <if test="businessGroupNo != null" >
+        BUSINESS_GROUP_NO,
+      </if>
+      <if test="businessGroupName != null" >
+        BUSINESS_GROUP_NAME,
+      </if>
+      <if test="locationNo != null" >
+        LOCATION_NO,
+      </if>
+      <if test="locationName != null" >
+        LOCATION_NAME,
+      </if>
+      <if test="storeCategoryNo1 != null" >
+        STORE_CATEGORY_NO1,
+      </if>
+      <if test="storeCategoryName1 != null" >
+        STORE_CATEGORY_NAME1,
+      </if>
+      <if test="storeCategoryNo2 != null" >
+        STORE_CATEGORY_NO2,
+      </if>
+      <if test="storeCategoryName2 != null" >
+        STORE_CATEGORY_NAME2,
+      </if>
+      <if test="storeCategoryNo3 != null" >
+        STORE_CATEGORY_NO3,
+      </if>
+      <if test="storeCategoryName3 != null" >
+        STORE_CATEGORY_NAME3,
+      </if>
+      <if test="storeChannelNo != null" >
+        STORE_CHANNEL_NO,
+      </if>
+      <if test="storeChannelName != null" >
+        STORE_CHANNEL_NAME,
+      </if>
+      <if test="storeChannelNo2 != null" >
+        STORE_CHANNEL_NO2,
+      </if>
+      <if test="storeChannelName2 != null" >
+        STORE_CHANNEL_NAME2,
+      </if>
+      <if test="storeChannelNo3 != null" >
+        STORE_CHANNEL_NO3,
+      </if>
+      <if test="storeChannelName3 != null" >
+        STORE_CHANNEL_NAME3,
+      </if>
+      <if test="categoryNo != null" >
+        CATEGORY_NO,
+      </if>
+      <if test="categoryName != null" >
+        CATEGORY_NAME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="organNo != null" >
+        #{organNo,jdbcType=VARCHAR},
+      </if>
+      <if test="organLno != null" >
+        #{organLno,jdbcType=VARCHAR},
+      </if>
+      <if test="organName != null" >
+        #{organName,jdbcType=VARCHAR},
+      </if>
+      <if test="organFlag != null" >
+        #{organFlag,jdbcType=DECIMAL},
+      </if>
+      <if test="brandDetailNo != null" >
+        #{brandDetailNo,jdbcType=VARCHAR},
+      </if>
+      <if test="brandDetailEname != null" >
+        #{brandDetailEname,jdbcType=VARCHAR},
+      </if>
+      <if test="brandDetailCname != null" >
+        #{brandDetailCname,jdbcType=VARCHAR},
+      </if>
+      <if test="regionNo != null" >
+        #{regionNo,jdbcType=VARCHAR},
+      </if>
+      <if test="regionName != null" >
+        #{regionName,jdbcType=VARCHAR},
+      </if>
+      <if test="managingProvinceNo != null" >
+        #{managingProvinceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="managingProvinceName != null" >
+        #{managingProvinceName,jdbcType=VARCHAR},
+      </if>
+      <if test="managingAreaNo != null" >
+        #{managingAreaNo,jdbcType=VARCHAR},
+      </if>
+      <if test="managingAreaName != null" >
+        #{managingAreaName,jdbcType=VARCHAR},
+      </if>
+      <if test="managingCityNo != null" >
+        #{managingCityNo,jdbcType=VARCHAR},
+      </if>
+      <if test="managingCityName != null" >
+        #{managingCityName,jdbcType=VARCHAR},
+      </if>
+      <if test="businessCityNo != null" >
+        #{businessCityNo,jdbcType=VARCHAR},
+      </if>
+      <if test="businessCityName != null" >
+        #{businessCityName,jdbcType=VARCHAR},
+      </if>
+      <if test="orderUnitNo != null" >
+        #{orderUnitNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderUnitName != null" >
+        #{orderUnitName,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceNo != null" >
+        #{provinceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceName != null" >
+        #{provinceName,jdbcType=VARCHAR},
+      </if>
+      <if test="cityNo != null" >
+        #{cityNo,jdbcType=VARCHAR},
+      </if>
+      <if test="cityName != null" >
+        #{cityName,jdbcType=VARCHAR},
+      </if>
+      <if test="countyNo != null" >
+        #{countyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="countyName != null" >
+        #{countyName,jdbcType=VARCHAR},
+      </if>
+      <if test="partAreaNo != null" >
+        #{partAreaNo,jdbcType=VARCHAR},
+      </if>
+      <if test="partAreaName != null" >
+        #{partAreaName,jdbcType=VARCHAR},
+      </if>
+      <if test="businessCircleNo != null" >
+        #{businessCircleNo,jdbcType=VARCHAR},
+      </if>
+      <if test="businessCircleName != null" >
+        #{businessCircleName,jdbcType=VARCHAR},
+      </if>
+      <if test="storeLevel != null" >
+        #{storeLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="opendt != null" >
+        #{opendt,jdbcType=CHAR},
+      </if>
+      <if test="closedt != null" >
+        #{closedt,jdbcType=CHAR},
+      </if>
+      <if test="mallNo != null" >
+        #{mallNo,jdbcType=VARCHAR},
+      </if>
+      <if test="mallName != null" >
+        #{mallName,jdbcType=VARCHAR},
+      </if>
+      <if test="businessGroupNo != null" >
+        #{businessGroupNo,jdbcType=VARCHAR},
+      </if>
+      <if test="businessGroupName != null" >
+        #{businessGroupName,jdbcType=VARCHAR},
+      </if>
+      <if test="locationNo != null" >
+        #{locationNo,jdbcType=VARCHAR},
+      </if>
+      <if test="locationName != null" >
+        #{locationName,jdbcType=VARCHAR},
+      </if>
+      <if test="storeCategoryNo1 != null" >
+        #{storeCategoryNo1,jdbcType=VARCHAR},
+      </if>
+      <if test="storeCategoryName1 != null" >
+        #{storeCategoryName1,jdbcType=VARCHAR},
+      </if>
+      <if test="storeCategoryNo2 != null" >
+        #{storeCategoryNo2,jdbcType=VARCHAR},
+      </if>
+      <if test="storeCategoryName2 != null" >
+        #{storeCategoryName2,jdbcType=VARCHAR},
+      </if>
+      <if test="storeCategoryNo3 != null" >
+        #{storeCategoryNo3,jdbcType=VARCHAR},
+      </if>
+      <if test="storeCategoryName3 != null" >
+        #{storeCategoryName3,jdbcType=VARCHAR},
+      </if>
+      <if test="storeChannelNo != null" >
+        #{storeChannelNo,jdbcType=VARCHAR},
+      </if>
+      <if test="storeChannelName != null" >
+        #{storeChannelName,jdbcType=VARCHAR},
+      </if>
+      <if test="storeChannelNo2 != null" >
+        #{storeChannelNo2,jdbcType=VARCHAR},
+      </if>
+      <if test="storeChannelName2 != null" >
+        #{storeChannelName2,jdbcType=VARCHAR},
+      </if>
+      <if test="storeChannelNo3 != null" >
+        #{storeChannelNo3,jdbcType=VARCHAR},
+      </if>
+      <if test="storeChannelName3 != null" >
+        #{storeChannelName3,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryNo != null" >
+        #{categoryNo,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryName != null" >
+        #{categoryName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yougou.bi.mdp.common.model.DimOrgAllinfo" >
+    UPDATE U_MD_DM.DIM_ORG_ALLINFO
+    <set >
+      <if test="organLno != null" >
+        ORGAN_LNO = #{organLno,jdbcType=VARCHAR},
+      </if>
+      <if test="organName != null" >
+        ORGAN_NAME = #{organName,jdbcType=VARCHAR},
+      </if>
+      <if test="organFlag != null" >
+        ORGAN_FLAG = #{organFlag,jdbcType=DECIMAL},
+      </if>
+      <if test="brandDetailNo != null" >
+        BRAND_DETAIL_NO = #{brandDetailNo,jdbcType=VARCHAR},
+      </if>
+      <if test="brandDetailEname != null" >
+        BRAND_DETAIL_ENAME = #{brandDetailEname,jdbcType=VARCHAR},
+      </if>
+      <if test="brandDetailCname != null" >
+        BRAND_DETAIL_CNAME = #{brandDetailCname,jdbcType=VARCHAR},
+      </if>
+      <if test="regionNo != null" >
+        REGION_NO = #{regionNo,jdbcType=VARCHAR},
+      </if>
+      <if test="regionName != null" >
+        REGION_NAME = #{regionName,jdbcType=VARCHAR},
+      </if>
+      <if test="managingProvinceNo != null" >
+        MANAGING_PROVINCE_NO = #{managingProvinceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="managingProvinceName != null" >
+        MANAGING_PROVINCE_NAME = #{managingProvinceName,jdbcType=VARCHAR},
+      </if>
+      <if test="managingAreaNo != null" >
+        MANAGING_AREA_NO = #{managingAreaNo,jdbcType=VARCHAR},
+      </if>
+      <if test="managingAreaName != null" >
+        MANAGING_AREA_NAME = #{managingAreaName,jdbcType=VARCHAR},
+      </if>
+      <if test="managingCityNo != null" >
+        MANAGING_CITY_NO = #{managingCityNo,jdbcType=VARCHAR},
+      </if>
+      <if test="managingCityName != null" >
+        MANAGING_CITY_NAME = #{managingCityName,jdbcType=VARCHAR},
+      </if>
+      <if test="businessCityNo != null" >
+        BUSINESS_CITY_NO = #{businessCityNo,jdbcType=VARCHAR},
+      </if>
+      <if test="businessCityName != null" >
+        BUSINESS_CITY_NAME = #{businessCityName,jdbcType=VARCHAR},
+      </if>
+      <if test="orderUnitNo != null" >
+        ORDER_UNIT_NO = #{orderUnitNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderUnitName != null" >
+        ORDER_UNIT_NAME = #{orderUnitName,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceNo != null" >
+        PROVINCE_NO = #{provinceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceName != null" >
+        PROVINCE_NAME = #{provinceName,jdbcType=VARCHAR},
+      </if>
+      <if test="cityNo != null" >
+        CITY_NO = #{cityNo,jdbcType=VARCHAR},
+      </if>
+      <if test="cityName != null" >
+        CITY_NAME = #{cityName,jdbcType=VARCHAR},
+      </if>
+      <if test="countyNo != null" >
+        COUNTY_NO = #{countyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="countyName != null" >
+        COUNTY_NAME = #{countyName,jdbcType=VARCHAR},
+      </if>
+      <if test="partAreaNo != null" >
+        PART_AREA_NO = #{partAreaNo,jdbcType=VARCHAR},
+      </if>
+      <if test="partAreaName != null" >
+        PART_AREA_NAME = #{partAreaName,jdbcType=VARCHAR},
+      </if>
+      <if test="businessCircleNo != null" >
+        BUSINESS_CIRCLE_NO = #{businessCircleNo,jdbcType=VARCHAR},
+      </if>
+      <if test="businessCircleName != null" >
+        BUSINESS_CIRCLE_NAME = #{businessCircleName,jdbcType=VARCHAR},
+      </if>
+      <if test="storeLevel != null" >
+        STORE_LEVEL = #{storeLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="opendt != null" >
+        OPENDT = #{opendt,jdbcType=CHAR},
+      </if>
+      <if test="closedt != null" >
+        CLOSEDT = #{closedt,jdbcType=CHAR},
+      </if>
+      <if test="mallNo != null" >
+        MALL_NO = #{mallNo,jdbcType=VARCHAR},
+      </if>
+      <if test="mallName != null" >
+        MALL_NAME = #{mallName,jdbcType=VARCHAR},
+      </if>
+      <if test="businessGroupNo != null" >
+        BUSINESS_GROUP_NO = #{businessGroupNo,jdbcType=VARCHAR},
+      </if>
+      <if test="businessGroupName != null" >
+        BUSINESS_GROUP_NAME = #{businessGroupName,jdbcType=VARCHAR},
+      </if>
+      <if test="locationNo != null" >
+        LOCATION_NO = #{locationNo,jdbcType=VARCHAR},
+      </if>
+      <if test="locationName != null" >
+        LOCATION_NAME = #{locationName,jdbcType=VARCHAR},
+      </if>
+      <if test="storeCategoryNo1 != null" >
+        STORE_CATEGORY_NO1 = #{storeCategoryNo1,jdbcType=VARCHAR},
+      </if>
+      <if test="storeCategoryName1 != null" >
+        STORE_CATEGORY_NAME1 = #{storeCategoryName1,jdbcType=VARCHAR},
+      </if>
+      <if test="storeCategoryNo2 != null" >
+        STORE_CATEGORY_NO2 = #{storeCategoryNo2,jdbcType=VARCHAR},
+      </if>
+      <if test="storeCategoryName2 != null" >
+        STORE_CATEGORY_NAME2 = #{storeCategoryName2,jdbcType=VARCHAR},
+      </if>
+      <if test="storeCategoryNo3 != null" >
+        STORE_CATEGORY_NO3 = #{storeCategoryNo3,jdbcType=VARCHAR},
+      </if>
+      <if test="storeCategoryName3 != null" >
+        STORE_CATEGORY_NAME3 = #{storeCategoryName3,jdbcType=VARCHAR},
+      </if>
+      <if test="storeChannelNo != null" >
+        STORE_CHANNEL_NO = #{storeChannelNo,jdbcType=VARCHAR},
+      </if>
+      <if test="storeChannelName != null" >
+        STORE_CHANNEL_NAME = #{storeChannelName,jdbcType=VARCHAR},
+      </if>
+      <if test="storeChannelNo2 != null" >
+        STORE_CHANNEL_NO2 = #{storeChannelNo2,jdbcType=VARCHAR},
+      </if>
+      <if test="storeChannelName2 != null" >
+        STORE_CHANNEL_NAME2 = #{storeChannelName2,jdbcType=VARCHAR},
+      </if>
+      <if test="storeChannelNo3 != null" >
+        STORE_CHANNEL_NO3 = #{storeChannelNo3,jdbcType=VARCHAR},
+      </if>
+      <if test="storeChannelName3 != null" >
+        STORE_CHANNEL_NAME3 = #{storeChannelName3,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryNo != null" >
+        CATEGORY_NO = #{categoryNo,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryName != null" >
+        CATEGORY_NAME = #{categoryName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    WHERE ORGAN_NO = #{organNo,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yougou.bi.mdp.common.model.DimOrgAllinfo" >
+    UPDATE U_MD_DM.DIM_ORG_ALLINFO
+    SET ORGAN_LNO = #{organLno,jdbcType=VARCHAR},
+      ORGAN_NAME = #{organName,jdbcType=VARCHAR},
+      ORGAN_FLAG = #{organFlag,jdbcType=DECIMAL},
+      BRAND_DETAIL_NO = #{brandDetailNo,jdbcType=VARCHAR},
+      BRAND_DETAIL_ENAME = #{brandDetailEname,jdbcType=VARCHAR},
+      BRAND_DETAIL_CNAME = #{brandDetailCname,jdbcType=VARCHAR},
+      REGION_NO = #{regionNo,jdbcType=VARCHAR},
+      REGION_NAME = #{regionName,jdbcType=VARCHAR},
+      MANAGING_PROVINCE_NO = #{managingProvinceNo,jdbcType=VARCHAR},
+      MANAGING_PROVINCE_NAME = #{managingProvinceName,jdbcType=VARCHAR},
+      MANAGING_AREA_NO = #{managingAreaNo,jdbcType=VARCHAR},
+      MANAGING_AREA_NAME = #{managingAreaName,jdbcType=VARCHAR},
+      MANAGING_CITY_NO = #{managingCityNo,jdbcType=VARCHAR},
+      MANAGING_CITY_NAME = #{managingCityName,jdbcType=VARCHAR},
+      BUSINESS_CITY_NO = #{businessCityNo,jdbcType=VARCHAR},
+      BUSINESS_CITY_NAME = #{businessCityName,jdbcType=VARCHAR},
+      ORDER_UNIT_NO = #{orderUnitNo,jdbcType=VARCHAR},
+      ORDER_UNIT_NAME = #{orderUnitName,jdbcType=VARCHAR},
+      PROVINCE_NO = #{provinceNo,jdbcType=VARCHAR},
+      PROVINCE_NAME = #{provinceName,jdbcType=VARCHAR},
+      CITY_NO = #{cityNo,jdbcType=VARCHAR},
+      CITY_NAME = #{cityName,jdbcType=VARCHAR},
+      COUNTY_NO = #{countyNo,jdbcType=VARCHAR},
+      COUNTY_NAME = #{countyName,jdbcType=VARCHAR},
+      PART_AREA_NO = #{partAreaNo,jdbcType=VARCHAR},
+      PART_AREA_NAME = #{partAreaName,jdbcType=VARCHAR},
+      BUSINESS_CIRCLE_NO = #{businessCircleNo,jdbcType=VARCHAR},
+      BUSINESS_CIRCLE_NAME = #{businessCircleName,jdbcType=VARCHAR},
+      STORE_LEVEL = #{storeLevel,jdbcType=VARCHAR},
+      OPENDT = #{opendt,jdbcType=CHAR},
+      CLOSEDT = #{closedt,jdbcType=CHAR},
+      MALL_NO = #{mallNo,jdbcType=VARCHAR},
+      MALL_NAME = #{mallName,jdbcType=VARCHAR},
+      BUSINESS_GROUP_NO = #{businessGroupNo,jdbcType=VARCHAR},
+      BUSINESS_GROUP_NAME = #{businessGroupName,jdbcType=VARCHAR},
+      LOCATION_NO = #{locationNo,jdbcType=VARCHAR},
+      LOCATION_NAME = #{locationName,jdbcType=VARCHAR},
+      STORE_CATEGORY_NO1 = #{storeCategoryNo1,jdbcType=VARCHAR},
+      STORE_CATEGORY_NAME1 = #{storeCategoryName1,jdbcType=VARCHAR},
+      STORE_CATEGORY_NO2 = #{storeCategoryNo2,jdbcType=VARCHAR},
+      STORE_CATEGORY_NAME2 = #{storeCategoryName2,jdbcType=VARCHAR},
+      STORE_CATEGORY_NO3 = #{storeCategoryNo3,jdbcType=VARCHAR},
+      STORE_CATEGORY_NAME3 = #{storeCategoryName3,jdbcType=VARCHAR},
+      STORE_CHANNEL_NO = #{storeChannelNo,jdbcType=VARCHAR},
+      STORE_CHANNEL_NAME = #{storeChannelName,jdbcType=VARCHAR},
+      STORE_CHANNEL_NO2 = #{storeChannelNo2,jdbcType=VARCHAR},
+      STORE_CHANNEL_NAME2 = #{storeChannelName2,jdbcType=VARCHAR},
+      STORE_CHANNEL_NO3 = #{storeChannelNo3,jdbcType=VARCHAR},
+      STORE_CHANNEL_NAME3 = #{storeChannelName3,jdbcType=VARCHAR},
+      CATEGORY_NO = #{categoryNo,jdbcType=VARCHAR},
+      CATEGORY_NAME = #{categoryName,jdbcType=VARCHAR}
+    WHERE ORGAN_NO = #{organNo,jdbcType=VARCHAR}
+  </update>
+  
+  <!--   省份	 -->
+  <select id="queryProvinces" resultType="HashMap">
+  	  SELECT DISTINCT PROVINCE_NO,PROVINCE_NAME FROM U_MD_DM.DIM_ORG_ALLINFO WHERE PROVINCE_NO IS NOT NULL OR PROVINCE_NAME IS NOT NULL
+  </select>
+  
+  <!--   县	 -->
+  <select id="queryCountys" resultType="HashMap">
+  	  SELECT DISTINCT COUNTY_NO,COUNTY_NAME FROM U_MD_DM.DIM_ORG_ALLINFO  WHERE COUNTY_NO IS NOT NULL OR COUNTY_NAME IS NOT NULL
+  </select>
+	
+	<!-- 订货单位 --> 
+	<select id="getOrderUnits" resultType="HashMap">
+		SELECT DISTINCT ORDER_UNIT_NO,ORDER_UNIT_NAME,MANAGING_CITY_NO from u_md_dm.dim_org_allinfo 
+		WHERE organ_flag=1
+		AND store_status=1
+		AND organ_no is not null
+		AND organ_name is not null
+		<if test="null!=params.managing_cities and ''!=params.managing_cities">
+			AND managing_city_no in
+			<foreach item="item" index="index" collection="params.managing_cities" open="(" separator="," close=")">
+           		#{item}
+			</foreach>
+  		</if>
+  		<if test="(null==params.managing_cities or ''==params.managing_cities) and 'yes'==params.managing_cities_exist">
+			AND 1=2
+  		</if>
+		<if test="null!=params.brand_detail_enames and ''!=params.brand_detail_enames">
+			AND brand_detail_no in
+			<foreach item="item" index="index" collection="params.brand_detail_enames" open="(" separator="," close=")">
+           		#{item}
+			</foreach>
+  		</if>
+  		<if test="(null==params.brand_detail_enames or ''==params.brand_detail_enames) and 'yes'==params.brand_detail_enames_exist">
+			AND 1=2
+  		</if>
+  		<if test="null!=params.order_unit_category and ''!=params.order_unit_category">
+			AND order_unit_type_no in
+			<foreach item="item" index="index" collection="params.order_unit_category" open="(" separator="," close=")">
+           		#{item}
+			</foreach>
+  		</if>
+  		<if test="(null==params.order_unit_category or ''==params.order_unit_category) and 'yes'==params.order_unit_category_exist">
+			AND 1=2
+  		</if>
+  		
+  		<!-- 拼装报表获取货管单位使用的是货管单位类型名称锁定 -->
+  		<if test="null!=params.order_unit_category_name and ''!=params.order_unit_category_name">
+			AND order_unit_type_name in
+			<foreach item="item" index="index" collection="params.order_unit_category_name" open="(" separator="," close=")">
+           		#{item}
+			</foreach>
+  		</if>
+  		
+  		<!-- 调货工具只显示品牌部的货管单位 -->
+  		<if test="null!=params.order_unit_type_no_params and ''!=params.order_unit_type_no_params">
+			AND order_unit_type_no=0
+  		</if>
+  			<if test="null!=params.order_unit_type_no_params and ''!=params.order_unit_type_no_params">
+			AND order_unit_type_no=0
+  		</if>
+  		   <if test="null!=params.brandNo and ''!=params.brandNo" >
+        and BRAND_NO = #{params.brandNo}
+      </if>
+       <if test="null!=params.regionNo and ''!=params.regionNo" >
+        and REGION_NO = #{params.regionNo}
+        
+      </if>
+       <if test="null!=params.order_unit_map_flag and ''!=params.order_unit_map_flag" >
+        and order_unit_map_flag = #{params.order_unit_map_flag}
+      </if>
+	</select>
+  
+	<select id="selectMalls" resultMap="BaseResultMap" parameterType="map" >
+		SELECT DISTINCT
+			   t.MALL_NO,
+			   t.MALL_NAME
+		  FROM
+			   u_md_dm.dim_org_allinfo t
+		 WHERE
+			   1 = 1
+		   AND MALL_NO IS NOT NULL
+		<if test="null!=params.REGION_NO and ''!=params.REGION_NO" >
+           and REGION_NO in (${params.REGION_NO})
+      	</if>
+      	<if test="null!=params.business_circles and ''!=params.business_circles">
+		   and t.business_circle_no in
+			<foreach item="item" index="index" collection="params.business_circles" open="(" separator="," close=")">
+		      	#{item}
+			</foreach>
+		</if>
+      	<if test="null!=params.brand_noes and ''!=params.brand_noes">
+		   and t.BRAND_NO in
+			<foreach item="item" index="index" collection="params.brand_noes" open="(" separator="," close=")">
+		      	#{item}
+			</foreach>
+		</if>
+      	<if test="null!=params.managing_cities and ''!=params.managing_cities">
+		   and t.MANAGING_CITY_NO in
+			<foreach item="item" index="index" collection="params.managing_cities" open="(" separator="," close=")">
+		      	#{item}
+			</foreach>
+		</if>
+		<if test="(null==params.business_circles or ''==params.business_circles) and 'yes'==params.business_circles_exist">
+			and 1=2
+		</if>
+		<if test="(null==params.managing_cities or ''==params.managing_cities) and 'yes'==params.managing_cities_exist">
+			and 1=2
+		</if>
+		  ORDER BY MALL_NO
+  	</select>
+  	
+  	
+  		<!-- 销售渠道 --> 
+	<select id="getGeners" resultMap="salGenerMap">
+		SELECT DISTINCT BRAND_DETAIL_NO,SAL_GENRE_NO,SAL_GENRE_NAME ,SAL_GENRE_ORDER from u_md_dm.DIM_PRO_SAL_GENRE 
+		WHERE  
+		SAL_GENRE_NO is not null
+		AND SAL_GENRE_NAME is not null
+		<if test="null!=params.brand_detail_enames and ''!=params.brand_detail_enames">
+			AND BRAND_DETAIL_NO in
+			<foreach item="item" index="index" collection="params.brand_detail_enames" open="(" separator="," close=")">
+           		#{item}
+			</foreach>
+  		</if>
+  		<if test="(null==params.brand_detail_enames or ''==params.brand_detail_enames) and 'yes'==params.brand_detail_enames_exist">
+			AND 1=2
+  		</if>
+  		ORDER BY SAL_GENRE_ORDER
+	</select>
+  	
+  	
+  	  		<!-- 款式来源 --> 
+	<select id="getStyleSource" resultMap="styleSourceMap">
+		SELECT DISTINCT BRAND_DETAIL_NO,STYLE_SOURCE_NO,STYLE_SOURCE_NAME ,STYLE_SOURCE_ORDER from u_md_dm.DIM_PRO_STYLE_SOURCE 
+		WHERE  
+		STYLE_SOURCE_NO is not null
+		AND STYLE_SOURCE_NAME is not null
+		<if test="null!=params.brand_detail_enames and ''!=params.brand_detail_enames">
+			AND BRAND_DETAIL_NO in
+			<foreach item="item" index="index" collection="params.brand_detail_enames" open="(" separator="," close=")">
+           		#{item}
+			</foreach>
+  		</if>
+  		<if test="(null==params.brand_detail_enames or ''==params.brand_detail_enames) and 'yes'==params.brand_detail_enames_exist">
+			AND 1=2
+  		</if>
+  		ORDER BY STYLE_SOURCE_ORDER
+	</select>
+  	
+  	  <!-- 研发地 --> 
+	<select id="getRdsite" resultMap="rdsiteMap">
+		SELECT DISTINCT BRAND_DETAIL_NO,RD_SITE_NO,RD_SITE_NAME ,RD_SITE_ORDER from u_md_dm.DIM_PRO_RD_SITE 
+		WHERE  
+		RD_SITE_NO is not null
+		AND RD_SITE_NAME is not null
+		<if test="null!=params.brand_detail_enames and ''!=params.brand_detail_enames">
+			AND BRAND_DETAIL_NO in
+			<foreach item="item" index="index" collection="params.brand_detail_enames" open="(" separator="," close=")">
+           		#{item}
+			</foreach>
+  		</if>
+  		<if test="(null==params.brand_detail_enames or ''==params.brand_detail_enames) and 'yes'==params.brand_detail_enames_exist">
+			AND 1=2
+  		</if>
+  		ORDER BY RD_SITE_ORDER
+	</select>
+  	
+  	  	  <!-- 大品类1 --> 
+	<select id="getLargeCategory" resultMap="largeCategoryMap">
+		SELECT DISTINCT BRAND_DETAIL_NO,LARGE_CATEGORY_NO,LARGE_CATEGORY_NAME ,LARGE_CATEGORY_ORDER from u_md_dm.DIM_PRO_LARGE_CATEGORY 
+		WHERE  
+		LARGE_CATEGORY_NO is not null
+		AND LARGE_CATEGORY_NAME is not null
+		<if test="null!=params.brand_detail_enames and ''!=params.brand_detail_enames">
+			AND BRAND_DETAIL_NO in
+			<foreach item="item" index="index" collection="params.brand_detail_enames" open="(" separator="," close=")">
+           		#{item}
+			</foreach>
+  		</if>
+  		<if test="(null==params.brand_detail_enames or ''==params.brand_detail_enames) and 'yes'==params.brand_detail_enames_exist">
+			AND 1=2
+  		</if>
+  		ORDER BY LARGE_CATEGORY_ORDER
+	</select>
+  	
+  	
+</mapper>

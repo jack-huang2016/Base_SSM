@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+	<!--  <properties url="file:///d:/yougouconf/mybatis-ibator-conf.properties"/>-->
+	
+	<!-- mysql驱动 -->
+	<!--   <classPathEntry location="D:\yougouconf\mysql-connector-java-5.1.27.jar" /> -->
+
+	<!-- oracle驱动 -->
+     <classPathEntry location="D:\yougouconf\ojdbc5-11.1.0.7.0.jar" /> 
+    
+    <!-- Postgresql驱动
+    <classPathEntry location="D:\yougouconf\postgresql-9.3-1102.jdbc41.jar" /> -->
+    
+	<context id="context1" targetRuntime="MyBatis3">
+		
+		<commentGenerator>
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+		
+
+		<!-- oracle连接方式-->
+		<jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
+			connectionURL="jdbc:oracle:thin:@(DESCRIPTION =(ADDRESS_LIST =(ADDRESS = (PROTOCOL = TCP)(HOST = 172.17.210.184)(PORT = 1521)))(CONNECT_DATA =(SERVICE_NAME = dev_bi_edw_shoes)))"
+			userId="u_md_rs" password="belle@16_rs" /> 
+		
+		<!-- mysql连接方式 -->
+		<!--<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://172.17.210.112:3306/mdm"
+			userId="root" password="root" />
+			-->
+			
+		<!-- Postgresql连接方式 
+		  <jdbcConnection driverClass="org.postgresql.Driver"
+			connectionURL="jdbc:postgresql://172.17.209.165:5432/bi_edw"
+			userId="pgadmin" password="pgadmin" />-->
+			
+		<javaTypeResolver>
+		<property name="forceBigDecimals" value="false" />
+		<!-- 
+			number(默认为38位),当长度超过18位时无法强制转换decimal
+			默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer 
+			true，把JDBC DECIMAL 和 NUMERIC 类型解析为java.math.BigDecimal 
+		-->
+		</javaTypeResolver>
+		<javaModelGenerator targetPackage="com.yougou.bi.mdp.common.model"
+			targetProject="bi-mdp-common">
+			<property name="rootInterface" value="java.io.Serializable"/>
+		</javaModelGenerator>	
+		<sqlMapGenerator targetPackage="mapper" targetProject="bi-mdp-dal/src/main/resources"/>
+	<javaClientGenerator targetPackage="com.yougou.bi.mdp.dal.database"	targetProject="bi-mdp-dal" type="XMLMAPPER">
+	<property name="interfaceExtendSupInterface" value="com.yougou.logistics.base.dal.database.BaseCrudMapper"/>
+	<property name="enableInterfaceSupInterfaceGenericity" value="false"/>
+	<property name="exclusionsMethods" value="countByQuery,deleteByQuery,deleteByPrimaryKey,insert,insertSelective,selectByQuery,selectByQueryWithBLOBs,selectByPrimaryKey,selectCount,selectByPage,updateByQuery,updateByQueryWithBLOBs,updateByPrimaryKeySelective,updateByPrimaryKeyWithBLOBs"/>
+	</javaClientGenerator>
+			
+	<sqlMapConfigFileAppend targetPackage="META-INF" targetProject="bi-mdp-dal/src/main/resources" confileFileName="mybatis-lsp-dal-config.xml" confileFilePackagePath="mapper"/>
+		<javaServiceGenerator targetPackage="com.yougou.bi.mdp.service" targetProject="bi-mdp-service"
+		interfaceExtendSupInterface="com.yougou.logistics.base.service.BaseCrudService" enableInterfaceSupInterfaceGenericity="false"
+		extendSupClass="com.yougou.logistics.base.service.BaseCrudServiceImpl" enableSupClassGenericity="false" />
+		
+		<javaManagerGenerator targetPackage="com.yougou.bi.mdp.manager" targetProject="bi-mdp-manager" 
+		interfaceExtendSupInterface="com.yougou.logistics.base.manager.BaseCrudManager" enableInterfaceSupInterfaceGenericity="false"
+		extendSupClass="com.yougou.logistics.base.manager.BaseCrudManagerImpl" enableSupClassGenericity="false" />
+			
+		<javaControllerGenerator targetPackage="com.yougou.bi.mdp.web.controller" targetProject="bi-mdp-web" 
+		extendSupClass="com.yougou.logistics.base.web.controller.BaseCrudController" enableSupClassGenericity="true" />
+		<!--
+		<table schema="dev1" tableName="logistics_base" domainObjectName="LogisticsBase" enableCountByExample="false"
+			enableUpdateByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" selectByExampleQueryId="false">
+			<columnOverride column="BASE_ID" javaType="Long"></columnOverride>
+		</table>
+		-->
+    
+		<tableSetting isSchema="true" enableCountByExample="false"
+			enableUpdateByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" selectByExampleQueryId="false">
+		<prop name="replaceTablePrefix">
+		<list>
+		<prefix name="" value="" />
+	</list>
+			</prop>
+			<!-- 忽略schema，避免在xml中出现schema.表名-->
+			<prop name="ignoreGeneratorSchema" value="true"/>
+			</tableSetting>
+	</context>
+</generatorConfiguration>
